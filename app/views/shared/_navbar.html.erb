@@ -1,6 +1,26 @@
-<% if user_signed_in? %>
-  <%= link_to "Log Out", logout_path %>
-<% else %>
- <%= link_to "Log In", login_path %>
- <%= link_to "Sign Up", new_user_path %>
-<% end %> 
+<nav id="navbar">
+  <div id="navbar-content">
+    <div class="logo">
+      <%= link_to root_path do %>
+        <div class="icon-container">
+          <%= image_tag "logo.gif", class: "navbar-brand img-circle icon" %>
+        </div>
+        <h1 class="no-small">Danebook</h1>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <div class="name-container">
+        <p class="name no-small bold"><%= link_to current_user.first_name, user_profile_path(current_user, current_user.profile), class: 'name' %></p>
+      </div>
+      &nbsp&nbsp<%= link_to "Sign Out", logout_path, class: "btn btn-primary" %>
+    <% else %>
+      <%= form_tag session_path, class: 'form-inline #nav-login-form' do %>
+        <%= hidden_field_tag :remember, true %>
+        <%= email_field_tag :email, nil, placeholder: 'Email', class: 'form-control' %>
+        <%= password_field_tag :password, nil, placeholder: 'Password', class: 'form-control' %>
+        <%= submit_tag 'Sign In', class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
+  </div>
+</nav>
+<div id="pusher"></div>

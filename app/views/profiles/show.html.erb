@@ -1,0 +1,57 @@
+<%= render 'shared/banner', user: @user %>
+      <section id="profile-content">
+        <header id="profile-header">
+          <h1>About</h1>
+          <%= link_to 'Edit', edit_user_profile_path(@user, @user.profile), class: "button btn btn-primary" if current_user == @user %>
+        </header>
+        <div id="profile-content-body" class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <h2>Basic Information</h2>
+              <table class="table">
+                <tbody>
+                <tr>
+                  <td class="bold">Birthday:</td>
+                  <td><%= @profile.birthday.strftime("%B %d, %Y") if @profile.birthday %></td>
+                </tr>
+                <tr>
+                  <td class="bold">College:</td>
+                  <td><%= @profile.college %></td>
+                </tr>
+                <tr>
+                  <td class="bold">Hometown:</td>
+                  <td><%= @profile.hometown %></td>
+                </tr>
+                <tr>
+                  <td class="bold">Currently Lives:</td>
+                  <td><%= @profile.current_location %></td>
+                </tr>
+                </tbody>
+              </table>
+              <h2>Contact Information</h2>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td class="bold">Email:</td>
+                    <td><%= @user.email %></td>
+                  </tr>
+                  <tr>
+                    <td class="bold">Phone:</td>
+                    <td><%= @profile.phone ? @profile.phone : "n/a" %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-sm-8">
+              <div class="quotes">
+                <h2>Words to Live By</h2>
+                <p><%= @profile.tagline %></p>
+              </div>
+              <h2>About Me</h2>
+              <p><%= @profile.about_me %></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+

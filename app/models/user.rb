@@ -19,6 +19,9 @@ class User < ApplicationRecord
   has_secure_password
 
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   def generate_token
     begin
@@ -37,6 +40,6 @@ class User < ApplicationRecord
   end
 
   def generate_profile
-    self.profile.create
+    self.profile = Profile.create
   end
 end
