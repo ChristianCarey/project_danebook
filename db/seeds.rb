@@ -42,7 +42,8 @@ User.all.each do |user|
   p.save
 
   rand(10..20).times do
-    user.posts.build(content: Faker::Lorem.sentence(2))
+    post = user.posts.build(content: Faker::Lorem.sentence(2))
+    post.created_at = Faker::Time.backward(20)
   end
 
   user.save

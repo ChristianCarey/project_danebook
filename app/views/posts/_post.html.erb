@@ -1,0 +1,29 @@
+<li>
+  <div class="card post">
+    <div class="card-body">
+      <header class="post-header">
+        <%= image_tag 'tyrion_profile', class: 'post-thumbnail' %>
+        <p>
+          <span class="name underlined">
+            <%= link_to post.author.name, user_posts_path(post.author) %>
+          </span>
+          <br>
+          <span class="time faded">
+            posted <%= time_ago_in_words(post.created_at) %> ago
+          </span>
+        </p>
+      </header>
+      <p class="post-content">
+        <%= post.content %>
+      </p>
+    </div>
+    <div class="card-footer">
+      <ul class="post-actions underlined">
+        <li class="like"><a href="#">Like</a></li>
+        <li><a href="#">Comment</a></li>
+        <%= post.delete_link %>
+      </ul>
+      <p class="likes"><%= post.first_and_other_likers %></p>
+    </div>
+  </div>
+</li>

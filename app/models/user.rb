@@ -21,8 +21,11 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  def timeline
+    posts.order(created_at: :desc)
+  end
 
-  def full_name
+  def name
     "#{first_name} #{last_name}"
   end
 

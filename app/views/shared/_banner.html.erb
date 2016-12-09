@@ -3,16 +3,16 @@
   <div id="profile-photo-container">
     <%= image_tag 'tyrion_profile' %>
   </div>
-  <h2 id="name"><%= user.first_name %> <%= user.last_name %></h2>
+  <h2 id="name"><%= user.name %></h2>
   <nav id="banner-nav">
     <ul id="banner-tabs">
       <li class="first">
-        <a href="timeline.html">
+        <%= link_to user_posts_path(user) do %>
           <p>Timeline</p>
-        </a>
+        <% end %>
       </li>
       <li>
-        <%= link_to user_profile_path(current_user, current_user.profile) do %>
+        <%= link_to user_profile_path(user) do %>
           <p>About</p>
         <% end %>
       </li>
@@ -27,7 +27,7 @@
     </ul>
     <% if current_user == user %>
       <span class="edit no-medium">
-        <%= link_to 'Edit Profile', edit_user_profile_path(user, user.profile) %>
+        <%= link_to 'Edit Profile', edit_user_profile_path(current_user) %>
       </span>
     <% end %>
   </nav>

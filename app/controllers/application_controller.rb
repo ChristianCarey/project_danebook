@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  prepend_before_filter { @@current_controller = self }
   before_action :authenticate_user
 
   private

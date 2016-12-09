@@ -7,10 +7,11 @@ Rails.application.routes.draw do
 
   resources :users do 
     # TODO make profiles singular resource 
-    resources :profiles, only: [:new, :edit, :show, :update]
+    resource :profile, only: [:new, :edit, :show, :update]
     resources :posts
   end
 
+  resources :profiles
   resources :posts
   resource  :session
 end

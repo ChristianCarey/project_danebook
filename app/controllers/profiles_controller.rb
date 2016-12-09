@@ -4,19 +4,19 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user    = User.find(params[:user_id])
     @profile = @user.profile
   end
 
   def edit
-    @user = User.find( params[:user_id] )
+    @user = User.find(params[:user_id])
     @profile = @user.profile
   end
 
   def update
-    @profile = Profile.find( params[:id] )
+    @user = User.find(params[:user_id])
 
-    if @profile.update( profile_params )
+    if @user.profile.update(profile_params)
       flash[:success] = "Profile updated!"
       redirect_to 
     else
