@@ -1,15 +1,10 @@
-class PostPresenter
-  def initialize(post, template)
-    @post     = post
-    @template = template
-  end
-
-  def h
-    @template
-  end
+class PostPresenter < BasePresenter
 
   def delete_link
-    '<li class="delete-post"><a href="#">Delete</a></li>'.html_safe if h.current_user == @post.author
+    if current_user == @post.author
+      link_to 'Delete', user_post_path(@post.author, @post), method: :delete, 
+                                                             class: 'delete-post'
+    end
   end
 
   def first_and_other_likers

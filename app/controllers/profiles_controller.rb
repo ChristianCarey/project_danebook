@@ -1,24 +1,21 @@
 class ProfilesController < ApplicationController
+  before_action :find_user, only: [:show, :edit, :update]
   before_action :require_current_user, only: [:edit, :update]
   def new
   end
 
   def show
-    @user    = User.find(params[:user_id])
     @profile = @user.profile
   end
 
   def edit
-    @user = User.find(params[:user_id])
     @profile = @user.profile
   end
 
   def update
-    @user = User.find(params[:user_id])
-
     if @user.profile.update(profile_params)
       flash[:success] = "Profile updated!"
-      redirect_to 
+      redirect_to @user.profile
     else
       render 'edit'
     end
@@ -30,10 +27,14 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:user_id, :birthday, :college, :hometown, :current_location, :phone, :about_me, :tagline)
   end
 
+  def find_user
+    @user = User.find(params[:user_id])
+  end
+
   def require_current_user
     unless current_user.id.to_s == params[:user_id]
       flash[:danger] = "Sorry, you're not authorized to do that."
-      redirect_back_or(root_path)
+      redirect_back_or(@user.profile)
     end
   end
 end

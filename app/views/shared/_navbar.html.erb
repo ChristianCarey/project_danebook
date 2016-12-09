@@ -10,7 +10,7 @@
     </div>
     <% if user_signed_in? %>
       <div class="name-container">
-        <p class="name no-small bold"><%= link_to current_user.first_name, user_profile_path(current_user, current_user.profile), class: 'name' %></p>
+        <p class="name no-small bold"><%= link_to current_user.first_name, user_posts_path(current_user), class: 'name' %></p>
       </div>
       &nbsp&nbsp<%= link_to "Sign Out", logout_path, class: "btn btn-primary" %>
     <% else %>
