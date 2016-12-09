@@ -2,10 +2,10 @@ class PostsController < ApplicationController
   def index
     if params[:user_id]
       @user  = User.find(params[:user_id])
-      @posts = @user.timeline.decorate
+      @posts = @user.timeline
       render :user_posts
     else
-      @posts = Post.timeline.decorate
+      @posts = Post.timeline
     end
   end
 
