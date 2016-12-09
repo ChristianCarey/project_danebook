@@ -4,7 +4,6 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 },
                        presence: true,
                        allow_nil: true
-
   validates :email, uniqueness: { case_sensitive: false },
                     format: { with: VALID_EMAIL_REGEX },
                     presence: true
@@ -13,7 +12,11 @@ class User < ApplicationRecord
   before_save   :downcase_email
   after_create  :generate_profile
 
-  has_one :profile, dependent: :destroy, inverse_of: :user
+  has_many :posts, foreign_key: :author_id, dependent: :destroy
+  has_one  :profile, dependent: :destroy, inverse_of: :user
+  has_many :likings, dependent: :destroy
+  has_many :liked, through: :likings, source: :likable
+  
   accepts_nested_attributes_for :profile
 
   has_secure_password

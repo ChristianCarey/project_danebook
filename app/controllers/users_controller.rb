@@ -32,9 +32,9 @@ class UsersController < ApplicationController
   end
 
   def require_current_user
-    unless current_user.id == params[:id]
+    unless current_user.id.to_s == params[:id]
       flash[:danger] = "Sorry, you're not authorized for that."
-      redirect_to :back
+      redirect_back_or(root_path)
     end
   end
 end
