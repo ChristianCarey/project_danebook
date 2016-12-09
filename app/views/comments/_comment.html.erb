@@ -1,0 +1,22 @@
+<% present comment do |comment_presenter| %>
+  <div class="post-comment">
+    <div class="comment-thumbnail-container no-small">
+      <%= image_tag 'tyrion_profile', class: 'comment-thumbnail' %>
+    </div>
+    <div class="comment content">
+      <p class="comment-header">
+        <%= link_to comment.author.name, class: 'underlined' %>&nbsp
+        <span class="time faded">
+          said <%= time_ago_in_words(comment.created_at) %> ago
+        </span>
+      </p>
+      <p>
+        <%= comment.content %>
+      </p>
+      <div class="comment-footer">
+        <span class="like"><%= link_to 'Like', comment_likings_path(comment), method: :post %></span>
+        <span class="other-likes faded"><%= comment_presenter.num_likers %></span>
+      </div>
+    </div>
+  </div>
+<% end %>
