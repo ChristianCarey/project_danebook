@@ -21,6 +21,15 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  def like(likable)
+    liking = Liking.new(likable_id: likable.id, user_id: id, likable_type: likable.class.to_s)
+    liking.save
+  end
+
+  def likes?(likable)
+    likings.include?(likable)
+  end
+
   def timeline
     posts.order(created_at: :desc)
   end

@@ -12,6 +12,14 @@ Rails.application.routes.draw do
   end
 
   resources :profiles
-  resources :posts
+  
+  resources :posts do 
+    resources :likings, only: [:create]
+  end
+
+  resources :comments do 
+    resources :likings, only: [:create]
+  end
+
   resource  :session
 end

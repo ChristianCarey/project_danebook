@@ -59,7 +59,8 @@ Post.all.each_with_index do |post, index|
 
   unless index % 4 == 0
     rand(1..4).times do 
-      post.likers << User.all.sample
+      user = User.all.sample
+      post.likers << user unless post.likers.include?(user)
     end
   end
 
@@ -70,6 +71,7 @@ puts "Liking comments"
 
 Comment.all.each_with_index do |comment, index|
   if index % 4 == 0
-    comment.likers << User.all.sample
+    user = User.all.sample
+    comment.likers << user unless comment.likers.include?(user)
   end
 end

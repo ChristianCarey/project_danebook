@@ -11,7 +11,7 @@ class PostPresenter < BasePresenter
     if @post.likers.any?
       first = @post.likers.first
       remainder = @post.likers.count - 1
-      if remainder = 0
+      if remainder == 0
         "#{first.name} likes this"
       else
         "#{first.name} and #{pluralize(remainder, 'other person')} like this"
