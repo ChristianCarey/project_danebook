@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 gem 'faker'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 gem 'draper'
+gem 'rails_12factor'
 
 group :development, :test do
   
