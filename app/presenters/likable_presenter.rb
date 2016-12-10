@@ -1,4 +1,4 @@
-module LikablePresentable
+module LikablePresenter
 
   def first_and_other_likers
     if @object.likers.any?

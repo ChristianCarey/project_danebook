@@ -1,3 +1,3 @@
 class CommentPresenter < BasePresenter
-  include LikablePresentable
+  include LikablePresenter
 end
