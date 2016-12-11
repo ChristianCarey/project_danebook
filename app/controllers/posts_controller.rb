@@ -5,10 +5,10 @@ class PostsController < ApplicationController
   def index
     if params[:user_id]
       find_user
-      @posts = @user.timeline.includes(:comments).includes(:likings).limit(20)
+      @posts = @user.timeline
       render :user_posts
     else
-      @posts = Post.timeline.includes(:comments).includes(:likings).limit(20)
+      @posts = Post.timeline
     end
   end
 

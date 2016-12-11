@@ -1,131 +1,131 @@
 <%= render 'shared/banner', user: @user %>
 <section id="profile-content" class="no-border">
-        <div id="profile-content-body">
-          <div id="timeline-row" class="row">
-            <div id="timeline-left" class="col-sm-4">
-              <div class="card">  
-                <header class="card-header">
-                  <h3>About</h3>
-                </header>
-                <div class="card-body">
-                  <table class="table">
-                    <tbody>
-                    <tr>
-                      <td class="bold">Birthday:</td>
-                      <td>273 AC</td>
-                    </tr>
-                    <tr>
-                      <td class="bold">College:</td>
-                      <td>Casterly High</td>
-                    </tr>
-                    <tr>
-                      <td class="bold">Hometown:</td>
-                      <td>Casterly Rock</td>
-                    </tr>
-                    <tr>
-                      <td class="bold">Currently Lives:</td>
-                      <td>Meereen</td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
+  <div id="profile-content-body">
+    <div id="timeline-row" class="row">
+      <div id="timeline-left" class="col-sm-4">
+        <div class="card">  
+          <header class="card-header">
+            <h3>About</h3>
+          </header>
+          <div class="card-body">
+            <table class="table">
+              <tbody>
+              <tr>
+                <td class="bold">Birthday:</td>
+                <td><%= @user.profile.birthday.strftime("%B %d, %Y") if @user.profile.birthday %></td>
+              </tr>
+              <tr>
+                <td class="bold">College:</td>
+                <td><%= @user.profile.college %></td>
+              </tr>
+              <tr>
+                <td class="bold">Hometown:</td>
+                <td><%= @user.profile.hometown %></td>
+              </tr>
+              <tr>
+                <td class="bold">Currently Lives:</td>
+                <td><%= @user.profile.current_location %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">  
+          <header class="card-header">
+            <h3>Photos</h3>
+          </header>
+          <div class="card-body">
+            <div id="card-photos">
+              <div>
+                <img src="images/tyrion1.png">
               </div>
-              <div class="card">  
-                <header class="card-header">
-                  <h3>Photos</h3>
-                </header>
-                <div class="card-body">
-                  <div id="card-photos">
-                    <div>
-                      <img src="images/tyrion1.png">
-                    </div>
-                    <div>
-                      <img src="images/tyrion2.jpg">
-                    </div>
-                    <div>
-                      <img src="images/tyrion3.jpg">
-                    </div>
-                    <div>
-                      <img src="images/tyrion4.jpg">
-                    </div>
-                    <div>
-                      <img src="images/tyrion5.jpg">
-                    </div>
-                    <div>
-                      <img src="images/tyrion6.png">
-                    </div>
-                    <div>
-                      <img src="images/tyrion7.jpg">
-                    </div>
-                    <div>
-                      <img src="images/tyrion8.jpg">
-                    </div>
-                    <div>
-                      <img src="images/tyrion9.jpg">
-                    </div>
-                  </div>
-                  <div class="link underlined">
-                    <a href="photos.html">See more photos</a>
-                  </div>
-                </div>
+              <div>
+                <img src="images/tyrion2.jpg">
               </div>
-              <div class="card">  
-                <header class="card-header">
-                  <h3>Friends (4,142)</h3>
-                </header>
-                <div class="card-body">
-                  <div id="card-photos">
-                    <div>
-                      <img src="images/dany.jpg">
-                      <a href="#" class="underlined"><p>Daenerys Targaryen</p></a>
-                    </div>
-                    <div>
-                      <img src="images/jonsnow.jpg">
-                      <a href="#" class="underlined"><p>Jon Snow</p></a>
-                    </div>
-                    <div>
-                      <img src="images/mormont.jpg">
-                      <a href="#" class="underlined"><p>Jorah Mormont</p></a>
-                    </div>
-                    <div>
-                      <img src="images/cersie.jpg">
-                      <a href="#" class="underlined"><p>Cersei Lannister</p></a>
-                    </div>
-                    <div>
-                      <img src="images/sansa.jpg">
-                      <a href="#" class="underlined"><p>Sansa Stark</p></a>
-                    </div>
-                    <div>
-                      <img src="images/varys.jpg">
-                      <a href="#" class="underlined"><p>Lord Varys</p></a>
-                    </div>
-                  </div>
-                  <div class="link underlined">
-                    <a href="friends.html">See more friends</a>
-                  </div>
-                </div>
+              <div>
+                <img src="images/tyrion3.jpg">
+              </div>
+              <div>
+                <img src="images/tyrion4.jpg">
+              </div>
+              <div>
+                <img src="images/tyrion5.jpg">
+              </div>
+              <div>
+                <img src="images/tyrion6.png">
+              </div>
+              <div>
+                <img src="images/tyrion7.jpg">
+              </div>
+              <div>
+                <img src="images/tyrion8.jpg">
+              </div>
+              <div>
+                <img src="images/tyrion9.jpg">
               </div>
             </div>
-            <div id="timeline-right" class="col-sm-8">
-              <% if current_user == @user %>
-                <div class="card">
-                  <header class="card-header">            
-                    <h3>Post</h3>
-                  </header>
-                  <%= form_for [current_user, Post.new] do |f| %>
-                    <div class="card-body" id="post-input-card-body">
-                      <%= f.text_area :content, placeholder: "Tell the world something..." %>
-                    </div>
-                    <div class="card-footer" id="post-submit-footer">
-                      <%= f.submit 'Post', class: 'btn btn-primary' %>
-                    </div>
-                  <% end %>
-                </div>
-              <% end %>
-              <ul>
-                <%= render @posts %>
-              </ul>
+            <div class="link underlined">
+              <a href="photos.html">See more photos</a>
             </div>
           </div>
         </div>
-      </section>
+        <div class="card">  
+          <header class="card-header">
+            <h3>Friends (4,142)</h3>
+          </header>
+          <div class="card-body">
+            <div id="card-photos">
+              <div>
+                <img src="images/dany.jpg">
+                <a href="#" class="underlined"><p>Daenerys Targaryen</p></a>
+              </div>
+              <div>
+                <img src="images/jonsnow.jpg">
+                <a href="#" class="underlined"><p>Jon Snow</p></a>
+              </div>
+              <div>
+                <img src="images/mormont.jpg">
+                <a href="#" class="underlined"><p>Jorah Mormont</p></a>
+              </div>
+              <div>
+                <img src="images/cersie.jpg">
+                <a href="#" class="underlined"><p>Cersei Lannister</p></a>
+              </div>
+              <div>
+                <img src="images/sansa.jpg">
+                <a href="#" class="underlined"><p>Sansa Stark</p></a>
+              </div>
+              <div>
+                <img src="images/varys.jpg">
+                <a href="#" class="underlined"><p>Lord Varys</p></a>
+              </div>
+            </div>
+            <div class="link underlined">
+              <a href="friends.html">See more friends</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="timeline-right" class="col-sm-8">
+        <% if current_user == @user %>
+          <div class="card">
+            <header class="card-header">            
+              <h3>Post</h3>
+            </header>
+            <%= form_for [current_user, Post.new] do |f| %>
+              <div class="card-body" id="post-input-card-body">
+                <%= f.text_area :content, placeholder: "Tell the world something..." %>
+              </div>
+              <div class="card-footer" id="post-submit-footer">
+                <%= f.submit 'Post', class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <ul>
+          <%= render @posts %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

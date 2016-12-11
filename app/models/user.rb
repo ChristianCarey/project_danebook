@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def timeline
-    posts.order(created_at: :desc)
+    posts.order(created_at: :desc).includes({ comments: :author }, :likers, :likings, :author)
   end
 
   def name

@@ -7,6 +7,6 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   def self.timeline
-    all.order(created_at: :desc)
+    all.order(created_at: :desc).includes({ comments: :author }, :likers, :likings, :author)
   end
 end
