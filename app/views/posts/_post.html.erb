@@ -20,6 +20,7 @@
       </div>
       <div class="card-footer">
         <ul class="post-actions underlined">
+          <!-- TODO, set likable ID outside of markup? -->
           <li class="like"><%= link_to 'Like', post_likings_path(post), method: :post %></li>
           <li><a href="#">Comment</a></li>
           <%= post_presenter.delete_link %>

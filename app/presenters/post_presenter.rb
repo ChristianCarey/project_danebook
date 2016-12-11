@@ -1,5 +1,6 @@
 class PostPresenter < BasePresenter
   include LikablePresenter
+  include CommentablePresenter
 
   def delete_link
     if current_user == @object.author

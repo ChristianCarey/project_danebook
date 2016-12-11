@@ -20,10 +20,4 @@ module LikablePresenter
       "#{pluralize(likings_count, 'person')} #{verb} this" 
     end
   end
-
-  def comments
-    if @object.comments.any?
-      content_tag(:div, "<hr> #{render(@object.comments)}".html_safe, class: 'post-comments-container')
-    end
-  end
 end
