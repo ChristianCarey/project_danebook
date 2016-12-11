@@ -6,20 +6,20 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :users do 
-    # TODO make profiles singular resource 
-    resource :profile, only: [:new, :edit, :show, :update]
+    resource  :profile,     only: [:new, :edit, :show, :update]
     resources :posts
+    resources :friendships, only: [:index, :create, :destroy]
   end
 
   resources :profiles
   
   resources :posts do 
-    resources :likings, only: [:create]
+    resources :likings,  only: [:create]
     resources :comments, only: [:create, :destroy]
   end
 
   resources :comments do 
-    resources :likings, only: [:create]
+    resources :likings,  only: [:create]
     resources :comments, only: [:create, :destroy]
   end
 

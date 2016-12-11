@@ -5,10 +5,10 @@ class PostsController < ApplicationController
   def index
     if params[:user_id]
       find_user
-      @posts = @user.timeline
+      @posts = @user.timeline.limit(10)
       render :user_posts
     else
-      @posts = Post.timeline
+      @posts = Post.timeline.limit(10)
     end
   end
 

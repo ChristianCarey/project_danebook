@@ -1,34 +1,34 @@
-<header id="banner">
-  <div id="cover-photo-container"></div>
-  <div id="profile-photo-container">
-    <%= image_tag 'tyrion_profile' %>
-  </div>
-  <h2 id="name"><%= user.name %></h2>
-  <nav id="banner-nav">
-    <ul id="banner-tabs">
-      <li class="first">
-        <%= link_to user_posts_path(user) do %>
-          <p>Timeline</p>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to user_profile_path(user) do %>
-          <p>About</p>
-        <% end %>
-      </li>
-      <li>
-        <a href="photos.html"
-            <p>Photos <span class="faded">(123)</span></p>
-          </a>
-      </li>
-      <li class="selected last">
-          <p>Friends <span class="faded">(4,142)</span></p>
-      </li>
-    </ul>
-    <% if current_user == user %>
-      <span class="edit no-medium">
-        <%= link_to 'Edit Profile', edit_user_profile_path(current_user) %>
-      </span>
-    <% end %>
-  </nav>
-</header>
+<% present user.profile do |profile_presenter| %>
+  <header id="banner">
+    <div id="cover-photo-container"></div>
+    <div id="profile-photo-container">
+      <%= image_tag 'tyrion_profile' %>
+    </div>
+    <h2 id="name"><%= user.name %></h2>
+    <nav id="banner-nav">
+      <ul id="banner-tabs">
+        <li class="first">
+          <%= link_to user_posts_path(user) do %>
+            <p>Timeline</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to user_profile_path(user) do %>
+            <p>About</p>
+          <% end %>
+        </li>
+        <li>
+          <a href="photos.html"
+              <p>Photos <span class="faded">(123)</span></p>
+            </a>
+        </li>
+        <li class="selected last">
+          <%= link_to user_friendships_path(user) do %>
+            <p>Friends <span class="faded"><%= user.friendships.size %></span></p>
+          <% end %>
+        </li>
+      </ul>
+      <%= profile_presenter.edit_or_friend_link %>
+    </nav>
+  </header>
+<% end %>

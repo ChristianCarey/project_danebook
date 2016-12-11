@@ -88,7 +88,12 @@ hr {
   margin: 0;
 }
 
-//contianers
+textarea {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #888;
+}
+//containers
 
 .form-container {
   margin-top: 16px;
@@ -308,9 +313,16 @@ hr {
   }
 
   .edit {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+    margin-left: auto;
+    margin-right: 14px;
+  }
+
+  .friend-button {
+    margin-left: auto;
+    margin-right: 14px;
+    a {
+      color: white;
+    }
   }
 }
 
@@ -382,12 +394,6 @@ hr {
         border: 1px solid #888;
         padding-left: 5px;
       }
-    }
-
-    textarea {
-      width: 100%;
-      height: 150px;
-      border: 1px solid #888;
     }
   }
 
