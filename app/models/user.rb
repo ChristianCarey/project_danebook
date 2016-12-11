@@ -13,9 +13,11 @@ class User < ApplicationRecord
   after_create  :generate_profile
 
   has_many :posts, foreign_key: :author_id, dependent: :destroy
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_one  :profile, dependent: :destroy, inverse_of: :user
   has_many :likings, dependent: :destroy
-  has_many :liked, through: :likings, source: :likable
+  has_many :liked_posts, through: :likings, source: :likable, source_type: 'Post'
+  has_many :liked_comments, through: :likings, source: :likable, source_type: 'Comment'
   
   accepts_nested_attributes_for :profile
 
@@ -27,7 +29,12 @@ class User < ApplicationRecord
   end
 
   def likes?(likable)
-    likings.include?(likable)
+    likable
+    liked.include?(likable)
+  end
+
+  def liked
+    liked_posts + liked_comments
   end
 
   def timeline

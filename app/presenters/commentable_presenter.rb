@@ -12,6 +12,6 @@ module CommentablePresenter
   end
 
   def comments_list
-    render @object.comments.order(created_at: :desc)
+    render @object.comments
   end
 end
