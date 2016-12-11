@@ -23,6 +23,7 @@ module LikablePresenter
 
   def like_link
     if current_user.likes?(@object)
+      # TODO can I get the right liking without making this query?
       liking = Liking.where(user_id: current_user.id, likable_id: @object.id).first
       path = "liking_path"
       link_to 'Unlike', send(path, liking.id), method: :delete

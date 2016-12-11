@@ -15,7 +15,7 @@ class LikingsController < ApplicationController
     if @liking.destroy
       redirect_to :back
     else
-      redirect_to :back, danger: "You have't liked that yet."
+      redirect_to :back, danger: "You haven't liked that yet."
     end
   end
 

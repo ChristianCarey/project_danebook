@@ -18,9 +18,9 @@ class User < ApplicationRecord
   has_many :likings, dependent: :destroy
   has_many :liked_posts, through: :likings, source: :likable, source_type: 'Post'
   has_many :liked_comments, through: :likings, source: :likable, source_type: 'Comment'
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
-  has_many :inverse_friendships, class_name: 'Friendship'
+  has_many :inverse_friendships, class_name: 'Friendship', dependent: :destroy
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
   
@@ -68,5 +68,9 @@ class User < ApplicationRecord
 
   def generate_profile
     self.profile = Profile.create
+  end
+
+  def friend_of?(other_user)
+    friends.include?(other_user)
   end
 end
