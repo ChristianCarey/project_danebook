@@ -1,7 +1,9 @@
 FactoryGirl.define do
+  # TODO can I make this commentable as well as posts? ditto likable
+  
   factory :comment do
-    content "MyText"
-    author_id 1
-    parent_id 1
+    content "Lorem ipsum."
+    author
+    commentable
   end
 end

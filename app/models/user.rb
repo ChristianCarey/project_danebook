@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   before_create :generate_token
   before_save   :downcase_email
-  after_create  :generate_profile
+  after_create  :create_profile
 
   has_many :posts, foreign_key: :author_id, dependent: :destroy
   has_many :comments, foreign_key: :author_id, dependent: :destroy
@@ -29,12 +29,12 @@ class User < ApplicationRecord
   has_secure_password
 
   def like(likable)
-    liking = Liking.new(likable_id: likable.id, user_id: id, likable_type: likable.class.to_s)
-    liking.save
+    likable_type = likable.class.to_s
+    association  = "liked_#{likable_type.downcase.pluralize}"
+    send(association) << likable
   end
 
   def likes?(likable)
-    likable
     liked.include?(likable)
   end
 
@@ -66,7 +66,7 @@ class User < ApplicationRecord
     self.email = email.downcase
   end
 
-  def generate_profile
+  def create_profile
     self.profile = Profile.create
   end
 

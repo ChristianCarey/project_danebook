@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :post do
-    content "MyText"
-    author_id 1
+  factory :post, aliases: [:commentable, :likable] do
+    content "Lorem ipsum."
+    author
   end
 end

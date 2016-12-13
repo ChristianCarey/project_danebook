@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :profile do
-    user nil
+    user
     birthday "2016-12-07"
     college "MyString"
     hometown "MyString"

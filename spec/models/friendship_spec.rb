@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  let(:friendship) { build(:friendship) }
+  context "belongs to" do 
+    specify "user" do 
+      expect(friendship).to respond_to(:user)
+    end
+
+    specify "friend" do 
+      expect(friendship).to respond_to(:friend)
+    end
+  end
 end
