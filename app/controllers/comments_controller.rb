@@ -4,9 +4,11 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(comment_params)
     @comment.author = current_user
     if @comment.save
-      redirect_to :back, success: 'Comment created.'
+      flash[:success] = 'Comment created.'
+      redirect_to :back
     else
-      redirect_to :back, success: "Comment can't be blank."
+      flash[:danger] = "Comment can't be blank."
+      redirect_to :back
     end
   end
 
@@ -14,9 +16,11 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     require_current_user
     if @comment.destroy
-      redirect_to :back, success: "Comment removed."
+      flash[:success]  = "Comment removed."
+      redirect_to :back
     else
-      redirect_to :back, danger: "We can't delete that comment."
+      flash[:danger] = "We can't delete that comment." 
+      redirect_to :back
     end
   end
 

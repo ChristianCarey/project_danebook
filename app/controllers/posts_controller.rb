@@ -20,6 +20,7 @@ class PostsController < ApplicationController
       redirect_to user_posts_url(@user)
     else
       # TODO cannot render because instance variables get lost
+      flash[:danger] = "Post can't be blank."
       redirect_to user_posts_url(@user)
     end
   end

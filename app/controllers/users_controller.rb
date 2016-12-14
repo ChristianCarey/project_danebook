@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       redirect_to edit_user_profile_path(@user, @user.profile)
     else
+      flash[:danger] = "Try signing up again."
       render :new
     end
   end

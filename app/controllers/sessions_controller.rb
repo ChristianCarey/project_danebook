@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       params[:remember] ? permanent_sign_in(@user) : sign_in(@user)
       flash[:success] = "Signed in successfully."
-      redirect_back_or(@user.profile)
+      redirect_back_or(user_posts_path(@user))
     else
       flash.now[:danger] = "Invalid information."
       render :new

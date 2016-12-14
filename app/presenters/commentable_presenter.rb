@@ -1,8 +1,6 @@
 module CommentablePresenter
   def comments
-    if @object.comments.any?
-      content_tag(:div, "<hr> #{ comments_list } #{ comment_form }".html_safe, class: 'post-comments-container')
-    end
+    content_tag(:div, "<hr> #{ comments_list } #{ comment_form }".html_safe, class: 'post-comments-container')
   end
 
   private

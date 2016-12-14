@@ -6,13 +6,18 @@ RSpec.describe Liking, type: :model do
 
   context "composite key" do 
     
-    let(:second_liking) do 
+    let(:identical_liking) do 
       build(:liking, user_id: liking.user_id, 
-                     likable_id: liking.likable_id)
+                     likable_id: liking.likable_id,
+                     likable_type: liking.likable_type)
+    end
+
+    before do 
+      liking.save
     end
 
     it "must be unique" do 
-      expect(second_liking).not_to be_valid
+      expect(identical_liking).not_to be_valid
     end
   end
   
