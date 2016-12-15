@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
     @profile = @user.profile
   end
 
-  def update
+  def update    
     if @user.profile.update(profile_params)
       flash[:success] = "Profile updated!"
       redirect_to user_profile_path(@user)

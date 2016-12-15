@@ -1,26 +1,26 @@
 class CommentsController < ApplicationController
+  before_action :find_comment, only: [:destroy]
+  before_action :require_current_user, only: [:destroy]
   def create 
     @commentable = extract_commentable
     @comment = @commentable.comments.build(comment_params)
     @comment.author = current_user
     if @comment.save
       flash[:success] = 'Comment created.'
-      redirect_to :back
+      redirect_back(fallback_location: :root)
     else
       flash[:danger] = "Comment can't be blank."
-      redirect_to :back
+      redirect_back(fallback_location: :root)
     end
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    require_current_user
     if @comment.destroy
       flash[:success]  = "Comment removed."
-      redirect_to :back
+      redirect_back(fallback_location: :root)
     else
       flash[:danger] = "We can't delete that comment." 
-      redirect_to :back
+      redirect_back(fallback_location: :root)
     end
   end
 
@@ -35,9 +35,14 @@ class CommentsController < ApplicationController
     resource.singularize.classify.constantize.find(id)
   end
 
+  def find_comment
+    @comment = Comment.find(params[:id])
+  end
+
   def require_current_user
     unless @comment.author == current_user
-      redirect_to :back, danger: "That's not yours to delete."
+      flash[:danger] = "That's not yours to delete."
+      redirect_back(fallback_location: :root)
     end
   end
 end

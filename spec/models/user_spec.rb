@@ -146,19 +146,6 @@ RSpec.describe User, type: :model do
         end).to be true
       end
     end
-
-    describe "#like" do 
-
-      it "adds a post to liked_posts" do 
-        user.like(post)
-        expect(user.liked_posts).to include(post)
-      end
-
-      it "adds a comment to liked_comments" do 
-        user.like(comment)
-        expect(user.liked_comments).to include(comment)
-      end
-    end
   end
 
   describe "#timeline" do 

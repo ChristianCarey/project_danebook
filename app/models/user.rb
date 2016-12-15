@@ -62,15 +62,17 @@ class User < ApplicationRecord
     save!
   end
 
+  def friend_of?(other_user)
+    friends.include?(other_user)
+  end
+
+  private
+
   def downcase_email
-    self.email = email.downcase
+    self.email = email.downcase if self.email
   end
 
   def create_profile
     self.profile = Profile.create
-  end
-
-  def friend_of?(other_user)
-    friends.include?(other_user)
   end
 end

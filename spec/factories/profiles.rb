@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :profile do
     user
-    birthday "2016-12-07"
+    birthday Date.today - 10
     college "MyString"
     hometown "MyString"
     current_location "MyString"

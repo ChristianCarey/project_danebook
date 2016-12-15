@@ -112,7 +112,7 @@
             <header class="card-header">            
               <h3>Post</h3>
             </header>
-            <%= form_for [current_user, Post.new] do |f| %>
+            <%= form_for Post.new do |f| %>
               <div class="card-body" id="post-input-card-body">
                 <%= f.text_area :content, placeholder: "Tell the world something..." %>
               </div>
