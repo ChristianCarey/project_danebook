@@ -567,6 +567,10 @@ textarea {
     text-align: center;
     padding: 4px 0 8px;;
   }
+
+  .post-photo {
+    width: 100%;
+  }
 }
 
 #post-input-card-body {
@@ -663,7 +667,12 @@ textarea {
 }
 
 #post-submit-footer {
-  text-align: right;
+  display: flex;
+  align-items: center;
+
+  .form-switch {
+    margin-right: auto;
+  }
 }
 
 .card-footer {

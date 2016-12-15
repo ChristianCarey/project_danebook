@@ -3,7 +3,7 @@ require 'rails_helper'
 describe PostPresenter do 
 
   before do 
-    def presenter.current_user 
+    def presenter.current_user  
     end
 
     allow(presenter).to receive(:current_user).and_return(user)

@@ -2,7 +2,7 @@ class ProfilePresenter < BasePresenter
 
 
   def edit_or_friend_link
-    current_user == user ? edit_link : friend_link
+    is_current_user? ? edit_link : friend_link
   end
 
   def edit_link
@@ -15,10 +15,24 @@ class ProfilePresenter < BasePresenter
     current_user.friend_of?(user) ? remove_friend_link : add_friend_link
   end
 
+  def post_or_photo_form(photo)
+    if is_current_user?
+      if photo
+        render 'photos/form' 
+      else
+        render 'posts/form' 
+      end
+    end
+  end
+
   private
 
   def user
     @object.user
+  end
+
+  def is_current_user?
+    current_user == user
   end
 
   def add_friend_link

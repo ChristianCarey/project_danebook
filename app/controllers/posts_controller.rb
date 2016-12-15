@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @posts = @user.timeline.limit(10)
+      @posts = @user.timeline
+      @photo = params[:photo]
       render :user_posts
     else
       @posts = Post.timeline.limit(10)
@@ -26,10 +27,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    flash[:success] = "Post deleted."
-    redirect_to user_posts_path(current_user)
+    if @post.destroy
+      flash[:success]  = "Post removed."
+      redirect_back(fallback_location: :root)
+    else
+      flash[:danger] = "We can't delete that post." 
+      redirect_back(fallback_location: :root)
+    end
   end
 
   private

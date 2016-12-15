@@ -13,11 +13,13 @@ class User < ApplicationRecord
   after_create  :create_profile
 
   has_many :posts, foreign_key: :author_id, dependent: :destroy
+  has_many :photos, foreign_key: :author_id, dependent: :destroy
   has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_one  :profile, dependent: :destroy, inverse_of: :user
   has_many :likings, dependent: :destroy
   has_many :liked_posts, through: :likings, source: :likable, source_type: 'Post'
   has_many :liked_comments, through: :likings, source: :likable, source_type: 'Comment'
+  has_many :liked_comments, through: :likings, source: :likable, source_type: 'Photo'
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :inverse_friendships, class_name: 'Friendship', dependent: :destroy
@@ -43,7 +45,8 @@ class User < ApplicationRecord
   end
 
   def timeline
-    posts.order(created_at: :desc).includes({ comments: :author }, :likers, :likings, :author)
+    photos.order(created_at: :desc).includes({ comments: :author }, :likers, :likings, :author) +
+    posts.order(created_at: :desc).includes({ comments: :author }, :likers, :likings, :author)  
   end
 
   def name

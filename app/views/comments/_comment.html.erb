@@ -16,7 +16,7 @@
       <div class="comment-footer">
       <!-- TODO, set likable ID outside of markup? -->
         <span class="like"><%= comment_presenter.like_link %></span>
-        <%= comment_presenter.delete_link %>
+        <%= comment_presenter.delete_link('delete-comment') %>
         <span class="other-likes faded"><%= comment_presenter.num_likings %></span>
       </div>
     </div>

@@ -1,0 +1,14 @@
+<div class="card">
+  <header class="card-header">            
+    <h3>Photo</h3>
+  </header>
+  <%= form_for Photo.new do |f| %>
+    <div class="card-body" id="post-input-card-body">
+      <%= f.file_field :image %>
+    </div>
+    <div class="card-footer" id="post-submit-footer">
+      <%= link_to "Write a post", url_for(photo: false), class: "form-switch" %>
+      <%= f.submit 'Post', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

@@ -9,11 +9,17 @@ Rails.application.routes.draw do
     resource  :profile,     only: [:new, :edit, :show, :update]
     resources :posts
     resources :friendships, only: [:index, :create]
+    resources :photos, only: [:create]
   end
 
-  resources :posts
+  
   resources :friendships, only: [:destroy]
   resources :profiles
+  
+  resources :photos do 
+    resources :likings,  only: [:create]
+    resources :comments, only: [:create, :destroy]
+  end
   
   resources :posts do 
     resources :likings,  only: [:create]
