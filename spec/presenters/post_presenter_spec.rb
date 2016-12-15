@@ -120,4 +120,18 @@ describe PostPresenter do
       end
     end
   end
+
+  describe "#comments" do 
+    # TODO this seems weird...
+    
+    it "renders the comments list" do 
+      expect(presenter).to receive(:comments_list)
+      presenter.comments
+    end
+
+    it "renders the comment form" do 
+      expect(presenter).to receive(:comment_form)
+      presenter.comments
+    end
+  end
 end
