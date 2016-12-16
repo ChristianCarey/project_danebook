@@ -21,7 +21,7 @@ RSpec.describe PostsController, type: :controller do
       end
 
       it "redirects to the user's timeline" do 
-        expect(response).to redirect_to(user_posts_path(user))
+        expect(response).to redirect_to(user_activities_path(user))
       end
     end
 
@@ -36,7 +36,7 @@ RSpec.describe PostsController, type: :controller do
       end
 
       it "redirects to the user's timeline" do 
-        expect(response).to redirect_to(user_posts_path(user))
+        expect(response).to redirect_to(user_activities_path(user))
       end
     end
   end

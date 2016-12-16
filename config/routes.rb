@@ -4,16 +4,17 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'
 
-  root 'posts#index'
+  root 'activities#index'
 
   resources :users do 
     resource  :profile,     only: [:new, :edit, :show, :update]
-    resources :posts
+    resources :posts,       only: [:create, :destroy]
     resources :friendships, only: [:index, :create]
-    resources :photos, only: [:create]
+    resources :photos,      only: [:create]
+    resources :activities,  only: [:index]
   end
 
-  resources :activities
+  resources :activities, only: [:index]
   resources :profile_photos, only: [:create, :destroy]
   resources :friendships, only: [:destroy]
   resources :profiles
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :posts do 
+  resources :posts, only: [:create, :destroy] do 
     resources :likings,  only: [:create]
     resources :comments, only: [:create, :destroy]
   end

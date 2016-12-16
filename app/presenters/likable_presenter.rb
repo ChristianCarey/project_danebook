@@ -3,7 +3,7 @@ module LikablePresenter
   def first_and_other_likers
     if likable.likings_count && likable.likings.any?
       first = likable.likers.first
-      first_link = link_to first.name, user_posts_path(first), class: 'underlined'
+      first_link = link_to first.name, user_activities_path(first), class: 'underlined'
       remainder = likable.likings.size - 1
       if remainder == 0
         "#{first_link} likes this".html_safe

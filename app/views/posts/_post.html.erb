@@ -6,7 +6,7 @@
           <%= profile_photo(post.author, :thumb, "post-thumbnail") %>
           <p>
             <span class="name underlined">
-              <%= link_to post.author.name, user_posts_path(post.author) %>
+              <%= link_to post.author.name, user_activities_path(post.author) %>
             </span>
             <br>
             <span class="time faded">
