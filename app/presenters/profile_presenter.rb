@@ -15,13 +15,9 @@ class ProfilePresenter < BasePresenter
     current_user.friend_of?(user) ? remove_friend_link : add_friend_link
   end
 
-  def post_or_photo_form(photo)
+  def post_or_photo_form_if_current_user(photo)
     if is_current_user?
-      if photo
-        render 'photos/form' 
-      else
-        render 'posts/form' 
-      end
+      post_or_photo_form(photo)
     end
   end
 

@@ -108,7 +108,7 @@
           </div>
         </div>
         <div id="timeline-right" class="col-sm-8">
-          <%= profile_presenter.post_or_photo_form(@photo) %>
+          <%= profile_presenter.post_or_photo_form_if_current_user(@photo) %>
           <ul>
             <%= render @posts %>
           </ul>

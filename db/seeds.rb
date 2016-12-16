@@ -19,7 +19,7 @@ User.create(first_name: "Christian",
 
 
 puts "Creating other users..."
-20.times do 
+10.times do 
   first_name = Faker::Name.first_name
   User.create(first_name: first_name, 
             last_name: Faker::Name.last_name, 
@@ -41,7 +41,7 @@ User.all.each do |user|
   p.tagline          = Faker::Lorem.sentence(1)
   p.save
 
-  rand(10..20).times do
+  rand(3..5).times do
     post = user.posts.build(content: Faker::Lorem.sentence(2))
     post.created_at = Faker::Time.backward(20)
   end
@@ -52,7 +52,7 @@ end
 puts "Commenting on and liking posts"
 
 Post.all.each_with_index do |post, index|
-  rand(0..8).times do 
+  rand(0..4).times do 
     post.comments.build(content:   Faker::Lorem.sentence(1),
                         author_id: User.all.sample.id)
   end

@@ -7,7 +7,7 @@
       <%= f.text_area :content, placeholder: "Tell the world something..." %>
     </div>
     <div class="card-footer" id="post-submit-footer">
-      <%= link_to "Share a photo", url_for(photo: true), class: "form-switch" %>
+      <%= link_to "Share a photo", url_for(photo: "true"), class: "form-switch" %>
       <%= f.submit 'Post', class: 'btn btn-primary' %>
     </div>
   <% end %>

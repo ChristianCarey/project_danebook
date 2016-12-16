@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def post_or_photo_form(photo)
-    if photo
+    if photo == "true"
       render 'photos/form' 
     else
       render 'posts/form' 

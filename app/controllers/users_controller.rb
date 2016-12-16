@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action      :require_current_user, only: [:edit, :update, :destroy]
   skip_before_action :authenticate_user,    only: [:new, :create]
 
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end

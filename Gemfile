@@ -15,6 +15,7 @@ gem 'faker'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'paperclip', '~> 5.1'
 gem 'aws-sdk', '~> 2.6', '>= 2.6.38'
+gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.1'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -33,6 +34,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard-rspec', require: false
+  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
 end
 
 group :test do 

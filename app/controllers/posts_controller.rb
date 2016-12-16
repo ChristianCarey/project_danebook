@@ -11,8 +11,8 @@ class PostsController < ApplicationController
       render :user_posts
     else
       # TODO paginate
-      # TODO this will not do.
-      @posts = Photo.timeline.limit(5) + Post.timeline.limit(5)
+      # TODO this will not do. Activities?
+      @posts = Photo.timeline + Post.timeline
     end
   end
 

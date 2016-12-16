@@ -14,6 +14,7 @@ class ProfilePhotosController < ApplicationController
   end
 
   def destroy
+    # TODO don't destroy profile!
     if @profile.destroy
       flash[:success] = "Profile photo deleted."
       redirect_back(fallback_location: :root)
