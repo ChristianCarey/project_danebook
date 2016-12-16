@@ -15,7 +15,9 @@
           </p>
         </header>
         <p class="post-content">
-          <%= image_tag photo.image.url(:large), class: 'post-photo' %>
+          <%= link_to photo do %>
+            <%= image_tag photo.image.url(:large), class: 'post-photo' %>
+          <% end %>
         </p>
       </div>
       <div class="card-footer">

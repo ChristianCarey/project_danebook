@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :find_photo, only: [:destroy]
+  before_action :find_photo, only: [:show, :destroy]
   before_action :require_current_user, only: [:destroy]
 
   def show

@@ -3,13 +3,16 @@ class PostsController < ApplicationController
   before_action :require_current_user, only: [:destroy]
 
   def index
+    @photo = params[:photo]
     if params[:user_id]
       @user = User.find(params[:user_id])
+      # TODO paginate
       @posts = @user.timeline
-      @photo = params[:photo]
       render :user_posts
     else
-      @posts = Post.timeline.limit(10)
+      # TODO paginate
+      # TODO this will not do.
+      @posts = Photo.timeline.limit(5) + Post.timeline.limit(5)
     end
   end
 

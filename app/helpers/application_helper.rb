@@ -6,4 +6,12 @@ module ApplicationHelper
     yield presenter if block_given?
     presenter
   end
+
+  def post_or_photo_form(photo)
+    if photo
+      render 'photos/form' 
+    else
+      render 'posts/form' 
+    end
+  end
 end

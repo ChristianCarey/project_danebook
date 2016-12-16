@@ -1,4 +1,8 @@
-<h1>The feed of news</h1>
-<ul>
-  <%= render @posts %>
-</ul>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 main-timeline">
+    <p><%= post_or_photo_form(@photo) %></p>
+    <ul>
+      <%= render @posts %>
+    </ul>
+  </div>
+</div>
