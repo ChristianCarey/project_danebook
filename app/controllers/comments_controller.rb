@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(comment_params)
     @comment.author = current_user
     if @comment.save
+      send_commented_email
       flash[:success] = 'Comment created.'
       redirect_back(fallback_location: :root)
     else
@@ -25,6 +26,14 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def send_commented_email
+    Comment.delay.send_commented_email(
+      commenter: @comment.author,
+      commented: @commentable.author,
+      commentabl: @commentable
+    )
+  end
 
   def comment_params
     params.require(:comment).permit(:content)

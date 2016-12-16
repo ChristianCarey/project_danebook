@@ -70,6 +70,10 @@ class User < ApplicationRecord
     friends.include?(other_user)
   end
 
+  def self.send_welcome_email(user_id)
+    UserMailer.welcome(find(user_id)).deliver!
+  end
+
   private
 
   def downcase_email

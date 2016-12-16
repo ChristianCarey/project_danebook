@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       params[:remember] ? permanent_sign_in(@user) : sign_in(@user)
       flash[:success] = "Welcome to Danebook. Tell us a bit about yourself."
       sign_in(@user)
+      User.delay.send_welcome_email(@user.id) 
       redirect_to edit_user_profile_path(@user)
     else
       flash[:danger] = "Try signing up again."
