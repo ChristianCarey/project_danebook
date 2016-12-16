@@ -24,6 +24,7 @@ class User < ApplicationRecord
   has_many    :friends, through: :friendships
   has_many    :inverse_friendships, class_name: 'Friendship', dependent: :destroy
   has_many    :inverse_friends, through: :inverse_friendships, source: :user
+  has_many    :activities 
   belongs_to  :profile_photo, class_name: 'Photo', optional: :true
 
   

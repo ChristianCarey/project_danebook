@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'
 
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
     resources :photos, only: [:create]
   end
 
+  resources :activities
   resources :profile_photos, only: [:create, :destroy]
   resources :friendships, only: [:destroy]
   resources :profiles

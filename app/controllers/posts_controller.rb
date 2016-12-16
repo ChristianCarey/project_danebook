@@ -19,11 +19,10 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
+      track_activity
       flash[:success] = "Post created!"
-      # TODO does not work with path, only url?
       redirect_to user_posts_path(current_user)
     else
-      # TODO cannot render because instance variables get lost
       flash[:danger] = "Post can't be blank."
       redirect_to user_posts_url(current_user)
     end
