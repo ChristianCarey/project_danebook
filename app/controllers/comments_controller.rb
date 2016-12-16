@@ -29,9 +29,9 @@ class CommentsController < ApplicationController
 
   def send_commented_email
     Comment.delay.send_commented_email(
-      commenter: @comment.author,
-      commented: @commentable.author,
-      commentabl: @commentable
+      commenter_id: @comment.author.id,
+      commented_id: @commentable.author.id,
+      comment_id:   @comment.id
     )
   end
 
