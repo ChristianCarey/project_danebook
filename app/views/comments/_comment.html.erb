@@ -1,7 +1,7 @@
 <% present comment do |comment_presenter| %>
   <div class="post-comment">
     <div class="comment-thumbnail-container no-small">
-      <%= image_tag 'tyrion_profile', class: 'comment-thumbnail' %>
+      <%= profile_photo(comment.author, :thumb, "comment-thumbnail") %>
     </div>
     <div class="comment content">
       <p class="comment-header">

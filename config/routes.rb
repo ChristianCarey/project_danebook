@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :photos, only: [:create]
   end
 
-  
+  resources :profile_photos, only: [:create, :destroy]
   resources :friendships, only: [:destroy]
   resources :profiles
   
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :likings,  only: [:create]
     resources :comments, only: [:create, :destroy]
   end
-  
+
   resources :posts do 
     resources :likings,  only: [:create]
     resources :comments, only: [:create, :destroy]

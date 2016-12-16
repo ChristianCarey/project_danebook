@@ -3,6 +3,7 @@ class Photo < ApplicationRecord
   include Commentable
 
   belongs_to :author, class_name: 'User'
+  has_one    :profiler, class_name: 'User'
 
   has_attached_file :image, styles: { large: "500x500", medium: "300x300", thumb: "100x100" }
   

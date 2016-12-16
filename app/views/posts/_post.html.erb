@@ -3,7 +3,7 @@
     <div class="card post">
       <div class="card-body">
         <header class="post-header">
-          <%= image_tag 'tyrion_profile', class: 'post-thumbnail' %>
+          <%= profile_photo(post.author, :thumb, "post-thumbnail") %>
           <p>
             <span class="name underlined">
               <%= link_to post.author.name, user_posts_path(post.author) %>

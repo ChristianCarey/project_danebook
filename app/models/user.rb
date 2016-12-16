@@ -12,18 +12,19 @@ class User < ApplicationRecord
   before_save   :downcase_email
   after_create  :create_profile
 
-  has_many :posts, foreign_key: :author_id, dependent: :destroy
-  has_many :photos, foreign_key: :author_id, dependent: :destroy
-  has_many :comments, foreign_key: :author_id, dependent: :destroy
-  has_one  :profile, dependent: :destroy, inverse_of: :user
-  has_many :likings, dependent: :destroy
-  has_many :liked_posts, through: :likings, source: :likable, source_type: 'Post'
-  has_many :liked_comments, through: :likings, source: :likable, source_type: 'Comment'
-  has_many :liked_comments, through: :likings, source: :likable, source_type: 'Photo'
-  has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships
-  has_many :inverse_friendships, class_name: 'Friendship', dependent: :destroy
-  has_many :inverse_friends, through: :inverse_friendships, source: :user
+  has_many    :posts, foreign_key: :author_id, dependent: :destroy
+  has_many    :photos, foreign_key: :author_id, dependent: :destroy
+  has_many    :comments, foreign_key: :author_id, dependent: :destroy
+  has_one     :profile, dependent: :destroy, inverse_of: :user
+  has_many    :likings, dependent: :destroy
+  has_many    :liked_posts, through: :likings, source: :likable, source_type: 'Post'
+  has_many    :liked_comments, through: :likings, source: :likable, source_type: 'Comment'
+  has_many    :liked_comments, through: :likings, source: :likable, source_type: 'Photo'
+  has_many    :friendships, dependent: :destroy
+  has_many    :friends, through: :friendships
+  has_many    :inverse_friendships, class_name: 'Friendship', dependent: :destroy
+  has_many    :inverse_friends, through: :inverse_friendships, source: :user
+  belongs_to  :profile_photo, class_name: 'Photo', optional: :true
 
   
   accepts_nested_attributes_for :profile

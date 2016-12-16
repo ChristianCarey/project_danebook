@@ -3,7 +3,7 @@
     <div class="card post">
       <div class="card-body">
         <header class="post-header">
-          <%= image_tag 'tyrion_profile', class: 'post-thumbnail' %>
+          <%= profile_photo(photo.author, :thumb, "post-thumbnail") %>
           <p>
             <span class="name underlined">
               <%= link_to photo.author.name, user_posts_path(photo.author) %>
@@ -22,7 +22,7 @@
         <ul class="post-actions underlined">
           <!-- TODO, set likable ID outside of markup? -->
           <li class="like"><%= photo_presenter.like_link %></li>
-          <li><a href="#">Comment</a></li>
+          <li><a href="#"><%= photo_presenter.profile_photo_link %></a></li>
           <%= photo_presenter.delete_link %>
         </ul>
         <p class="likes"><%= photo_presenter.first_and_other_likers %></p>
