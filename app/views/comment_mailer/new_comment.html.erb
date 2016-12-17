@@ -1,2 +1,2 @@
 <h1>Hello <%= @commented.first_name %></h1>
-<p>It looks like <%= @commenter.name %> commented on your <%= @comment.commentable.class.to_s.downcase %>. <%= link_to "Click here", user_posts_url(@commented) %> to check it out.<p>
+<p>It looks like <%= @commenter.name %> commented on your <%= @comment.commentable.class.to_s.downcase %>. <%= link_to "Click here", user_activities_url(@commented) %> to check it out.<p>
