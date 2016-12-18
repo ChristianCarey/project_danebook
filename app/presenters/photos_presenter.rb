@@ -1,0 +1,2 @@
+class PhotosPresenter < CollectionPresenter
+end

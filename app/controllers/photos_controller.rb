@@ -2,6 +2,12 @@ class PhotosController < ApplicationController
   before_action :find_photo, only: [:show, :destroy]
   before_action :require_current_user, only: [:destroy]
 
+  def index
+    @user = User.find(params[:user_id])
+    @photos = @user.photos
+    render :user_photos_index
+  end
+
   def show
   end
   

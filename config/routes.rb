@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resource  :profile,     only: [:new, :edit, :show, :update]
     resources :posts,       only: [:create, :destroy]
     resources :friendships, only: [:index, :create]
-    resources :photos,      only: [:create]
+    resources :photos,      only: [:index, :create]
     resources :activities,  only: [:index]
   end
 
