@@ -3,7 +3,6 @@
 <%= form_for [commentable, commentable.comments.build] do |f| %>
   <%= f.text_area :content, placeholder: "Write a response" %> 
   <div class="comment-input-actions">
-    <a class="underlined" href="#">Cancel</a>
     <%= f.submit "Comment", class: "btn btn-primary comment-submit-button" %>
   </div>
 <% end %> 

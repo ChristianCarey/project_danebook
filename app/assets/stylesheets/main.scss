@@ -493,20 +493,18 @@ textarea {
     padding-right: 18px;
   }
 
-  button {
-    background: $light-green;
-    color: #222;
-    border-color: #ddd;
-    border-radius: 3px;
-    font-size: 12px;
+  // .button {
+  //   background: $light-green;
+  //   color: #222;
+  //   border-color: #ddd;
+  //   border-radius: 3px;
+  //   font-size: 12px;
 
-    &:hover, &:active, &:focus {
-      background: #127C1F;
-      border-color: $light-green;
-    }
-
-
-  }
+  //   &:hover, &:active, &:focus {
+  //     background: #127C1F;
+  //     border-color: $light-green;
+  //   }
+  // }
 
   .small-unfriend {
     display: none;

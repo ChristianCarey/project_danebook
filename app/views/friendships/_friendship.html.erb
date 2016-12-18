@@ -1,3 +1,17 @@
-<li>
-  <%= link_to friendship.friend.name, user_activities_path(friendship.friend) %>
-</li>
+<div class="friend-box">
+  <div class="image-container">
+    <%= profile_photo(friendship.friend, :thumb) %>
+  </div>
+  <div class="name">
+    <p>
+      <%= link_to friendship.friend.name, user_activities_path(friendship.friend) %><br/>
+      <span class="faded">
+        <%= pluralize(friendship.friend.friendships.size, "friend")%>
+      </span><br/>
+      <%= link_to 'Unfriend Me', friendship_path(friendship), class: "btn btn-primary button small-unfriend", method: :delete %>
+    </p>
+  </div>
+  <div class="unfriend">
+    <%= link_to 'Unfriend Me', friendship_path(friendship), class: "btn btn-primary button big-unfriend", method: :delete %>
+  </div>
+</div>

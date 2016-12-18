@@ -1,0 +1,2 @@
+class FriendshipsPresenter < CollectionPresenter
+end

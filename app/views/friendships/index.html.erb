@@ -1,4 +1,11 @@
 <%= render 'shared/banner', user: @user %>
-<ul>
-  <%= render @friendships %>
-</ul>
+<section id="profile-content">
+  <header id="profile-header">
+    <h1>Friends</h1>
+  </header>
+  <div id="profile-content-body" class="container">
+    <% present_collection @friendships do |friendships_presenter| %>
+      <%= friendships_presenter.in_rows_of(2) %>
+    <% end %>
+  </div>
+</section>
