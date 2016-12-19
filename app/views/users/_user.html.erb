@@ -1,3 +1,18 @@
-<li>
-<%= link_to user.name, user_profile_path(user)%>
-</li>
+<% present user do |user_presenter| %>
+  <div class="friend-box">
+    <div class="image-container">
+      <%= profile_photo(user, :thumb) %>
+    </div>
+    <div class="name">
+      <p>
+        <%= link_to user.name, user_activities_path(user) %><br/>
+        <span class="faded">
+          <%= pluralize(user.friendships.size, "friend")%>
+        </span><br/>
+      </p>
+    </div>
+    <div class="unfriend">
+      <%= user_presenter.friend_link %>
+    </div>
+  </div>
+<% end %>

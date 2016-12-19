@@ -1,4 +1,7 @@
-<ul>
-  <%= render @users %>
-</ul>
-
+<div class="main-feed">
+  <ul>
+    <% present_collection @users do |users_presenter| %>
+      <%= users_presenter.in_rows_of(2) %>
+    <% end %>
+  </ul>
+</div>

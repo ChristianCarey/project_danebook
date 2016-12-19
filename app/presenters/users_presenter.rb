@@ -1,0 +1,2 @@
+class UsersPresenter < CollectionPresenter
+end

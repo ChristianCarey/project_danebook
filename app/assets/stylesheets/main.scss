@@ -26,6 +26,7 @@ $dark-green: #0d5916;
 
 //global
 
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -74,6 +75,14 @@ ul, p{
   &:active, &:focus {
     border-color: $dark-red;
     background-color: $bright-red;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   &:hover {
@@ -211,7 +220,7 @@ textarea {
   }
 }
 
-.main-timeline {
+.main-feed {
   padding-top: 14px;
 }
 
@@ -335,15 +344,11 @@ textarea {
     margin-right: 14px;
   }
 
-  .friend-button {
+  .friend-link {
     margin-left: auto;
     margin-right: 14px;
-    a {
-      color: white;
-    }
   }
 }
-
 
 
 //profile content
