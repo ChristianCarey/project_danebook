@@ -12,6 +12,21 @@ Rails.application.configure do
       s3_region: ENV['AWS_REGION']
     }
   }
+
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+
+  config.action_mailer.default_url_options = {
+    :host => 'pure-lake-60456.herokuapp.com/',
+  }
+
   
   config.cache_classes = true
 
