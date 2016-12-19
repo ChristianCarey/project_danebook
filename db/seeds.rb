@@ -49,7 +49,7 @@ User.all.each do |user|
   user.save
 end
 
-puts "Commenting on and liking posts"
+puts "Commenting on and liking posts..."
 
 Post.all.each_with_index do |post, index|
   rand(0..4).times do 
@@ -67,11 +67,22 @@ Post.all.each_with_index do |post, index|
   post.save
 end
 
-puts "Liking comments"
+puts "Liking comments..."
 
 Comment.all.each_with_index do |comment, index|
   if index % 4 == 0
     user = User.all.sample
     comment.likers << user unless comment.likers.include?(user)
+  end
+end
+
+puts "Making friends..."
+
+User.all.each do |user|
+  others = User.all.shuffle
+  
+  rand(3..9).times do 
+    friend = others.pop
+    user.friends << friend unless friend == user
   end
 end

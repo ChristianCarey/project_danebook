@@ -8,10 +8,10 @@
       <span class="faded">
         <%= pluralize(friendship.friend.friendships.size, "friend")%>
       </span><br/>
-      <%= link_to 'Unfriend Me', friendship_path(friendship), class: "btn btn-primary button small-unfriend", method: :delete %>
+      <%= link_to 'Unfriend Me', friendship_path(friendship), class: "btn btn-primary button small-unfriend", method: :delete if friendship.user == current_user %>
     </p>
   </div>
   <div class="unfriend">
-    <%= link_to 'Unfriend Me', friendship_path(friendship), class: "btn btn-primary button big-unfriend", method: :delete %>
+    <%= link_to 'Unfriend Me', friendship_path(friendship), class: "btn btn-primary button big-unfriend", method: :delete if friendship.user == current_user %>
   </div>
 </div>
