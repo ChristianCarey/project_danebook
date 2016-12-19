@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user,    only: [:new, :create]
 
   def index
-    @users = User.all
+    @users = User.search_by_name(params[:query])
   end
 
   def new

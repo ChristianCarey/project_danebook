@@ -75,6 +75,10 @@ class User < ApplicationRecord
     UserMailer.welcome(find(user_id)).deliver!
   end
 
+  def self.search_by_name(query)
+    User.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query}%", "%#{query}%")
+  end
+
   private
 
   def downcase_email

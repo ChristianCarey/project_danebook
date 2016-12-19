@@ -9,6 +9,14 @@
       <% end %>
     </div>
     <% if user_signed_in? %>
+      <div id="search-form-container">
+        <%= form_tag users_path, method: :get do %>
+          <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search by name...' %>
+          <%= button_tag do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+        <% end %>
+      </div>
       <div class="name-container">
         <p class="name no-small bold"><%= link_to current_user.first_name, user_activities_path(current_user), class: 'name' %></p>
       </div>
