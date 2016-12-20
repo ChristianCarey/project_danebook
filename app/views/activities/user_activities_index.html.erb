@@ -59,7 +59,7 @@
                 <% @user.friends.each do |friend| %>
                   <div>
                     <%= profile_photo(friend) %>
-                    <%= link_to friend do %>
+                    <%= link_to user_activities_path(friend) do %>
                       <p><%= friend.name %></p>
                     <% end %>
                   </div>
