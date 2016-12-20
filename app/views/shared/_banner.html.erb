@@ -18,9 +18,9 @@
           <% end %>
         </li>
         <li>
-          <a href="photos.html"
-              <p>Photos <span class="faded">(123)</span></p>
-            </a>
+          <%= link_to user_photos_path(user) do %>
+           <p>Photos <span class="faded"><%= user.photos.size %></span></p>
+          <% end %>
         </li>
         <li class="selected last">
           <%= link_to user_friendships_path(user) do %>
