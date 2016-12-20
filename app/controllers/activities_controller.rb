@@ -3,10 +3,10 @@ class ActivitiesController < ApplicationController
     @photo = params[:photo]
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @activities = @user.activities
+      @activities = @user.timeline.paginate(page: params[:page], per_page: 10)
       render :user_activities_index
     else
-      @activites = Activity.all
+      @activites = Activity.timeline.paginate(page: params[:page], per_page: 10)
     end
   end
 end

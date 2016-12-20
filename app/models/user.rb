@@ -47,8 +47,22 @@ class User < ApplicationRecord
   end
 
   def timeline
-    photos.order(created_at: :desc).includes({ comments: :author }, :likers, :likings, :author) +
-    posts.order(created_at: :desc).includes({ comments: :author }, :likers, :likings, :author)  
+    activities.includes(
+      { 
+        trackable: [
+                      :likings,
+                      :likers,
+                      { comments: [
+                          :likings,
+                          {
+                            author: :profile_photo
+                          }
+                        ]
+                      },
+                      { author: :profile_photo }
+                    ] 
+      }
+    )
   end
 
   def name

@@ -2,9 +2,11 @@
   <div class="col-md-10 col-md-offset-1 main-feed">
     <p><%= post_or_photo_form(@photo) %></p>
     <ul>
-      <% present_collection @activites do |activity_presenter| %>
-        <%= activity_presenter.render_partials %>
-      <% end %>
+      <%= will_paginate @activites %>
+        <% present_collection @activites do |activity_presenter| %>
+          <%= activity_presenter.render_partials %>
+        <% end %>
+      <%= will_paginate @activites %>
     </ul>
   </div>
 </div>
