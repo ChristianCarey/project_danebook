@@ -28,7 +28,7 @@ class PhotosController < ApplicationController
       redirect_back(fallback_location: :root)
     else
       flash[:danger] = "We can't delete that photo." 
-      redirect_back(fallback_location: :root)
+      redirect_to user_activities_path(current_user)
     end
   end
 
