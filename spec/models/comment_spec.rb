@@ -23,10 +23,10 @@ RSpec.describe Comment, type: :model do
 
     let(:second_comment) { build(:comment) }
 
-    it "orders by newest first" do 
+    it "orders by oldest first" do 
       comment.save
       second_comment.save
-      expect(Comment.all).to eq([second_comment, comment])
+      expect(Comment.all).to eq([comment, second_comment])
     end
   end
 end

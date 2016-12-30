@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many    :likings, dependent: :destroy
   has_many    :liked_posts, through: :likings, source: :likable, source_type: 'Post'
   has_many    :liked_comments, through: :likings, source: :likable, source_type: 'Comment'
-  has_many    :liked_comments, through: :likings, source: :likable, source_type: 'Photo'
+  has_many    :liked_photos, through: :likings, source: :likable, source_type: 'Photo'
   has_many    :friendships, dependent: :destroy
   has_many    :friends, through: :friendships
   has_many    :inverse_friendships, class_name: 'Friendship', dependent: :destroy
@@ -43,7 +43,7 @@ class User < ApplicationRecord
   end
 
   def liked
-    liked_posts + liked_comments
+    liked_posts + liked_comments + liked_photos
   end
 
   def timeline

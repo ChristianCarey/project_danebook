@@ -96,7 +96,6 @@ RSpec.describe User, type: :model do
   end
 
   context "likables" do 
-    # TODO find a way to test all 'likables' together
     let(:comment) { build_stubbed(:comment) }
 
     describe "#likes?" do 
@@ -145,24 +144,6 @@ RSpec.describe User, type: :model do
           user.liked.include?(post)
         end).to be true
       end
-    end
-  end
-
-  describe "#timeline" do 
-
-    let(:post)        { build(:post) }
-    let(:second_post) { build(:post) }
-    let(:third_post)  { build(:post) }
-    
-    before do 
-      user.posts << post
-      user.posts << second_post
-      user.posts << third_post
-      user.save
-    end
-
-    it "orders posts by newest first" do 
-      expect(user.timeline).to eq([third_post, second_post, post])
     end
   end
 

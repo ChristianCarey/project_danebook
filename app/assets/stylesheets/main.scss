@@ -121,7 +121,7 @@ textarea {
   height: 50px;
 }
 
-#navbar {
+#navbar-container {
   background: $med-green; /* Old browsers */
   background: -moz-linear-gradient(top, $med-green 0%, $dark-green 96%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top, $med-green 0%, $dark-green 96%); /* Chrome10-25,Safari5.1-6 */
@@ -740,6 +740,12 @@ textarea {
 
 .no-medium {
   @media only screen and (max-width : 769px) {
+      display: none;
+    }
+}
+
+.yes-medium {
+  @media only screen and (min-width : 769px) {
       display: none;
     }
 }

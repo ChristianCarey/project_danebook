@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     unless user_signed_in?
       flash[:danger] = "You must sign in."
       store_location
-      redirect_to login_path
+      redirect_to new_user_path
     end
   end
 

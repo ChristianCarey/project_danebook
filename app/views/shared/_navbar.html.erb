@@ -1,11 +1,11 @@
-<nav id="navbar">
+<nav id="navbar-container" class="navbar navbar-default">
   <div id="navbar-content">
-    <div class="logo">
+    <div class="logo navbar-header">
       <%= link_to root_path do %>
         <div class="icon-container">
           <%= image_tag "logo.gif", class: "navbar-brand img-circle icon" %>
         </div>
-        <h1 class="no-small">Danebook</h1>
+        <h1 class="no-medium">Danebook</h1>
       <% end %>
     </div>
     <% if user_signed_in? %>
@@ -18,11 +18,12 @@
         <% end %>
       </div>
       <div class="name-container">
-        <p class="name no-small bold"><%= link_to current_user.first_name, user_activities_path(current_user), class: 'name' %></p>
+        <p class="name bold"><%= link_to current_user.first_name, user_activities_path(current_user), class: 'name' %></p>
       </div>
       &nbsp&nbsp<%= link_to "Sign Out", logout_path, class: "btn btn-primary" %>
     <% else %>
-      <%= form_tag session_path, class: 'form-inline', id: 'nav-login-form' do %>
+      <%= link_to "Log In", login_path, class: "btn-primary btn yes-medium" %>
+      <%= form_tag session_path, class: 'form-inline no-medium', id: 'nav-login-form' do %>
         <%= hidden_field_tag :remember, true %>
         <%= email_field_tag :email, nil, placeholder: 'Email', class: 'form-control' %>
         <%= password_field_tag :password, nil, placeholder: 'Password', class: 'form-control' %>
