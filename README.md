@@ -1,9 +1,13 @@
+# The Danebook
 
-danebook
-========
+The Danebok is a social media site with all the features we have come to expect. Make a secure account, search for friends by name, build your social network and share posts and photos. Once you said what's on your mind, like and comment on your friends' activities. 
 
-This is the Real Dane Deal.
-=======
-# assignment_danebook_pages
+### Technologies
 
-[An HTML5, CSS3, Bootstrap, and SASS project of the Viking Code School](http://www.vikingcodeschool.com)
+This is made using Ruby On Rails (rails version 5), CSS3 with Flexbox, and Twitter Bootstrap.
+
+### Live version
+
+You can find a live version of the Danebook here: https://the-real-danebook.herokuapp.com/users/new
+
+Created by Christian Carey
