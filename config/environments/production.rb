@@ -24,7 +24,7 @@ Rails.application.configure do
   }
 
   config.action_mailer.default_url_options = {
-    :host => 'pure-lake-60456.herokuapp.com/',
+    :host => 'https://the-real-danebook.herokuapp.com/',
   }
   
   config.cache_classes = true
