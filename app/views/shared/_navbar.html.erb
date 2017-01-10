@@ -5,24 +5,46 @@
         <div class="icon-container">
           <%= image_tag "logo.gif", class: "navbar-brand img-circle icon" %>
         </div>
-        <h1 class="no-medium">Danebook</h1>
+        <h1>Danebook</h1>
       <% end %>
     </div>
     <% if user_signed_in? %>
-      <div id="search-form-container">
+      <span class="glyphicon glyphicon-menu-hamburger toggle-nav" id="expand-nav"></span>
+      <span class="glyphicon glyphicon-remove toggle-nav" id="collapse-nav"></span>
+      <ul class="small-nav">
+        <li>
+          <div id="search-form-container">
+            <%= form_tag users_path, method: :get do %>
+              <%= text_field_tag :query, nil, class: '  form-control', placeholder: 'Search by name...' %>
+              <%= button_tag class: "btn btn-primary" do %>
+                <span class="glyphicon glyphicon-search"></span>
+              <% end %>
+            <% end %>
+          </div>
+        </li>
+        <hr class="small-hr">
+        <li>
+          <p class="name bold">
+            <%= link_to "Your Profile", user_activities_path(current_user), class: 'small-name' %>
+          </p>
+        </li>
+      </ul>
+      <div id="search-form-container" class="big-nav">
         <%= form_tag users_path, method: :get do %>
           <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search by name...' %>
-          <%= button_tag do %>
+          <%= button_tag class: "btn btn-primary" do %>
             <span class="glyphicon glyphicon-search"></span>
           <% end %>
         <% end %>
       </div>
-      <div class="name-container">
-        <p class="name bold"><%= link_to current_user.first_name, user_activities_path(current_user), class: 'name' %></p>
+      <div class="name-container big-nav">
+        <p class="name bold">
+          <%= link_to current_user.first_name, user_activities_path(current_user), class: 'name' %>
+        </p>
       </div>
-      &nbsp&nbsp<%= link_to "Sign Out", logout_path, class: "btn btn-primary" %>
+      &nbsp&nbsp<%= link_to "Sign Out", logout_path, class: "btn btn-primary big-nav" %>
     <% else %>
-      <%= link_to "Log In", login_path, class: "btn-primary btn yes-medium" %>
+      <%= link_to "Sign In", login_path, class: "btn-primary btn yes-medium" %>
       <%= form_tag session_path, class: 'form-inline no-medium', id: 'nav-login-form' do %>
         <%= hidden_field_tag :remember, true %>
         <%= email_field_tag :email, nil, placeholder: 'Email', class: 'form-control' %>
