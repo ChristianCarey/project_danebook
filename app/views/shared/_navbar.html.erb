@@ -24,9 +24,11 @@
         </li>
         <hr class="small-hr">
         <li>
-          <p class="name bold">
-            <%= link_to "Your Profile", user_activities_path(current_user), class: 'small-name' %>
-          </p>
+          <%= link_to "Your Profile", user_activities_path(current_user), class: 'small-name' %>
+        </li>
+        <hr class="small-hr">
+        <li>
+          <%= link_to "Sign Out", logout_path, class: "small-name" %>
         </li>
       </ul>
       <div id="search-form-container" class="big-nav">
