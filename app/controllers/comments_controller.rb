@@ -7,8 +7,14 @@ class CommentsController < ApplicationController
     @comment.author = current_user
     if @comment.save
       send_commented_email
-      flash[:success] = 'Comment created.'
-      redirect_back(fallback_location: :root)
+      respond_to do |format|
+        format.html do 
+          flash[:success] = 'Comment created.'
+          redirect_back(fallback_location: :root)
+        end
+
+        format.js
+      end
     else
       flash[:danger] = "Comment can't be blank."
       redirect_back(fallback_location: :root)
@@ -17,8 +23,17 @@ class CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
-      flash[:success]  = "Comment removed."
-      redirect_back(fallback_location: :root)
+      respond_to do |format|
+        format.html do 
+          flash[:success]  = "Comment removed."
+          redirect_back(fallback_location: :root)
+        end
+
+        format.js do 
+          @deletable = @comment
+          render 'shared/destroy'
+        end
+      end
     else
       flash[:danger] = "We can't delete that comment." 
       redirect_back(fallback_location: :root)

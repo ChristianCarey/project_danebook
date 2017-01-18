@@ -14,8 +14,17 @@ class PhotosController < ApplicationController
   def create
     @photo = current_user.photos.build(photo_params)
     if @photo.save
-      flash[:success] = "Photo posted."
-      redirect_back(fallback_location: :root)
+      respond_to do |format|
+        format.html do 
+          flash[:success] = "Photo posted."
+          redirect_back(fallback_location: :root)
+        end
+
+        format.js do
+          @activity = @photo
+          render 'shared/create'
+        end
+      end
     else
       flash[:danger] = "Photo could not be uploaded."
       redirect_back(fallback_location: :root)
@@ -24,11 +33,29 @@ class PhotosController < ApplicationController
 
   def destroy
     if @photo.destroy
-      flash[:success]  = "Photo removed."
-      redirect_back(fallback_location: :root)
+      respond_to do |format|
+        format.html do 
+          flash[:success]  = "Photo removed."
+          redirect_back(fallback_location: :root)
+        end
+
+        format.js do 
+          @deletable = @photo
+          render 'shared/destroy'
+        end
+      end
     else
-      flash[:danger] = "We can't delete that photo." 
-      redirect_to user_activities_path(current_user)
+      respond_to do |format|
+        forrmat.html do 
+          flash[:danger] = "We can't delete that photo." 
+          redirect_to user_activities_path(current_user)
+        end
+
+        format.js do 
+          @deletable = @photo
+          render 'shared/destroy'
+        end
+      end
     end
   end
 

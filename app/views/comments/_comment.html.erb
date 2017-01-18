@@ -1,5 +1,5 @@
 <% present comment do |comment_presenter| %>
-  <div class="post-comment">
+  <div class="post-comment" data-id="<%= comment.id %>" data-type="comment">
     <div class="comment-thumbnail-container no-small">
       <%= profile_photo(comment.author, :thumb, "comment-thumbnail") %>
     </div>

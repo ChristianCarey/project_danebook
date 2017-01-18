@@ -1,5 +1,5 @@
 <% present post do |post_presenter| %>
-  <li>
+  <li data-id="<%= post.id %>" data-type="post">
     <div class="card post">
       <div class="card-body">
         <header class="post-header">
@@ -20,9 +20,8 @@
       </div>
       <div class="card-footer">
         <ul class="post-actions underlined">
-          <!-- TODO, set likable ID outside of markup? -->
           <li class="like"><%= post_presenter.like_link %></li>
-          <li><a href="#">Comment</a></li>
+          <li><a href="#" class="open-comment-form" data-comment-link-id="<%= post.id %>" data-comment-link-type="post">Comment</a></li>
           <%= post_presenter.delete_link %>
         </ul>
         <p class="likes"><%= post_presenter.first_and_other_likers %></p>

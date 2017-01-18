@@ -1,0 +1,6 @@
+(function() {
+  var $deletable = $('[data-id=<%= @deletable.id %>][data-type=<%= @deletable.class.to_s.downcase %>]');
+  $deletable.slideUp(400, function() {
+    this.remove();
+  });
+})();

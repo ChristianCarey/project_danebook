@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
       @activities = @user.timeline.paginate(page: params[:page], per_page: 10)
       render :user_activities_index
     else
-      @activites = Activity.timeline.paginate(page: params[:page], per_page: 10)
+      @activities = Activity.timeline.paginate(page: params[:page], per_page: 10)
     end
   end
 end

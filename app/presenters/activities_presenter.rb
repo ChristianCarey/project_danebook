@@ -8,13 +8,13 @@ class ActivitiesPresenter < CollectionPresenter
     result.html_safe
   end
 
-  private
-
   def render_partial(activity)
     locals = { activity: activity, presenter: self }
     locals[activity.trackable_type.underscore.to_sym] = activity.trackable 
     render partial_path(activity), locals
   end
+
+  private
 
   def partial_path(activity)
     "activities/#{activity.trackable_type.underscore}"

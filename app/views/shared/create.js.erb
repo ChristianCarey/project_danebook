@@ -1,0 +1,7 @@
+(function() {
+  var $activity = $("<%= j(render_activity(@activity)) %>").hide();
+  var $activitiesList = $('#activities-list');
+  $('.new-activity')[0].reset();
+  $activitiesList.prepend($activity);
+  $activity.slideDown(500)
+})();

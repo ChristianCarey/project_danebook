@@ -1,0 +1,7 @@
+(function() {
+  var $comment = $("<%= j(render @comment) %>").hide();
+  var $commentableFormContainer = $('[data-commentable-id="<%= @commentable.id%>"][data-commentable-type="<%= @commentable.class.to_s.downcase %>"]');
+  $commentableFormContainer.find('form')[0].reset();
+  $comment.insertBefore($commentableFormContainer);
+  $comment.slideDown(300);
+})();

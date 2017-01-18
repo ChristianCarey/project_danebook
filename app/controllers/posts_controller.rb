@@ -2,35 +2,40 @@ class PostsController < ApplicationController
   before_action :find_post,            only: [:destroy]
   before_action :require_current_user, only: [:destroy]
 
-  # def index
-  #   @photo = params[:photo]
-  #   if params[:user_id]
-  #     @user = User.find(params[:user_id])
-  #     # TODO paginate
-  #     @posts = @user.timeline
-  #     render :user_posts
-  #   else
-  #     # TODO paginate
-  #     # TODO this will not do. Activities?
-  #     @posts = Photo.timeline + Post.timeline
-  #   end
-  # end
 
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "Post created!"
-      redirect_to user_activities_path(current_user)
+      respond_to do |format|
+        format.html do 
+          flash[:success] = "Post created!"
+          redirect_back(fallback_location: :root)
+        end
+
+        format.js do 
+          @activity = @post
+          render 'shared/create'
+        end
+      end
     else
       flash[:danger] = "Post can't be blank."
-      redirect_to user_activities_path(current_user)
+      redirect_back(fallback_location: :root)
     end
   end
 
   def destroy
     if @post.destroy
-      flash[:success]  = "Post removed."
-      redirect_back(fallback_location: :root)
+      respond_to do |format|
+        format.html do 
+          flash[:success]  = "Post removed."
+          redirect_back(fallback_location: :root)
+        end
+
+        format.js do 
+          @deletable = @post
+          render 'shared/destroy'
+        end
+      end
     else
       flash[:danger] = "We can't delete that post." 
       redirect_back(fallback_location: :root)

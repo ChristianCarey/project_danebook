@@ -1,6 +1,5 @@
-<!-- TODO, set commentable ID outside of markup? -->
-<div class="post-comment-input">
-<%= form_for [commentable, commentable.comments.build] do |f| %>
+<div class="post-comment-input" data-commentable-id="<%= commentable.id %>" data-commentable-type="<%= commentable.class.to_s.downcase %>">
+<%= form_for [commentable, commentable.comments.build], remote: :true do |f| %>
   <%= f.text_area :content, placeholder: "Write a response" %> 
   <div class="comment-input-actions">
     <%= f.submit "Comment", class: "btn btn-primary comment-submit-button" %>
