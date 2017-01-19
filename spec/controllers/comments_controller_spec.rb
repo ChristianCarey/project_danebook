@@ -38,9 +38,9 @@ RSpec.describe CommentsController, type: :controller do
         request.cookies.delete(:auth_token)
       end
 
-      it "redirects user to the login path" do 
+      it "redirects user to the sign up path" do 
         process :create, params: { post_id: post.id, comment: attributes_for(:comment) }
-        expect(response).to redirect_to(login_path)
+        expect(response).to redirect_to(new_user_path)
       end
     end
   end

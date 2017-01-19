@@ -20,8 +20,8 @@ RSpec.describe PostsController, type: :controller do
         expect(user.posts).to include(Post.last)
       end
 
-      it "redirects to the user's timeline" do 
-        expect(response).to redirect_to(user_activities_path(user))
+      it "redirects back" do 
+        expect(response).to redirect_to(:root)
       end
     end
 
@@ -35,8 +35,8 @@ RSpec.describe PostsController, type: :controller do
         expect(user.posts).to be_empty
       end
 
-      it "redirects to the user's timeline" do 
-        expect(response).to redirect_to(user_activities_path(user))
+      it "redirects back" do 
+        expect(response).to redirect_to(:root)
       end
     end
   end
