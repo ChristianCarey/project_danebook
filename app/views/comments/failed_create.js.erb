@@ -1,13 +1,13 @@
 (function() {
-  var $comment = $("<%= j(render @comment) %>");
+  console.log('wat');
   var $commentableFormContainer = $('[data-commentable-id="<%= @commentable.id%>"][data-commentable-type="<%= @commentable.class.to_s.downcase %>"]');
   var $errors = $commentableFormContainer.find('.comment-errors');
-  $errors.text('');
-  $commentableFormContainer.find('textarea').css({
-    border: "1px solid #888"
+  $errors.text("Comment cannot be blank")
+  $errors.css({
+    color: "red"
   });
-  $comment.hide();
-  $commentableFormContainer.find('form')[0].reset();
-  $comment.insertBefore($commentableFormContainer);
-  $comment.slideDown(300);
+  $commentableFormContainer.find('textarea').css({
+    border: "1px solid red"
+  });
+  $commentableFormContainer.find('.comment-input-actions').prepend($errors);
 })();

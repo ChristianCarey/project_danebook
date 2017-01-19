@@ -1,7 +1,8 @@
 <div class="post-comment-input" data-commentable-id="<%= commentable.id %>" data-commentable-type="<%= commentable.class.to_s.downcase %>">
-<%= form_for [commentable, commentable.comments.build], remote: :true do |f| %>
+<%= form_for [commentable, commentable.comments.build], remote: :true, authenticity_token: true do |f| %>
   <%= f.text_area :content, placeholder: "Write a response" %> 
   <div class="comment-input-actions">
+    <span class="comment-errors"></span>
     <%= f.submit "Comment", class: "btn btn-primary comment-submit-button" %>
   </div>
 <% end %> 

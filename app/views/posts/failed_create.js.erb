@@ -1,0 +1,10 @@
+(function() {
+  console.log('wat')
+  var $input = $('textarea#post_content');
+  var $errors = $('.post-errors');
+  console.log($input)
+  $input.css({
+    border: "1px solid red"
+  });
+  $errors.text("Post cannot be blank.");
+})();

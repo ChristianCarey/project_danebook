@@ -1,6 +1,6 @@
 $(document).ready(function() { 
   $('.post-comment-input').hide();
-  $('.open-comment-form').click(function(e) {
+  $('body').on('click', '.open-comment-form', function(e) {
     e.preventDefault();
     var $id = $(e.target).data('comment-link-id');
     var $type = $(e.target).data('comment-link-type');

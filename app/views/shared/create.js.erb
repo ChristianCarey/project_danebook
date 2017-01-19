@@ -1,7 +1,14 @@
 (function() {
   var $activity = $("<%= j(render_activity(@activity)) %>").hide();
   var $activitiesList = $('#activities-list');
+  var $input = $('textarea#post_content');
+  var $errors = $('.post-errors');
+  $errors.text('');
+  $input.css({
+    border: '1px solid #888'
+  });
   $('.new-activity')[0].reset();
   $activitiesList.prepend($activity);
-  $activity.slideDown(500)
+  $activity.find('.post-comment-input').hide();
+  $activity.slideDown(500);
 })();

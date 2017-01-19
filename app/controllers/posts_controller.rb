@@ -18,8 +18,16 @@ class PostsController < ApplicationController
         end
       end
     else
-      flash[:danger] = "Post can't be blank."
-      redirect_back(fallback_location: :root)
+      respond_to do |format|
+        format.html do 
+          flash[:danger] = "Post can't be blank."
+          redirect_back(fallback_location: :root)
+        end
+
+        format.js do 
+          render :failed_create
+        end
+      end
     end
   end
 

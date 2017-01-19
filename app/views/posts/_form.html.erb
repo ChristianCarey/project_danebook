@@ -2,12 +2,13 @@
   <header class="card-header">            
     <h3>Post</h3>
   </header>
-  <%= form_for Post.new, remote: :true, html: { class: "new-activity" } do |f| %>
+  <%= form_for Post.new, remote: :true, authenticity_token: true, html: { class: "new-activity" } do |f| %>
     <div class="card-body" id="post-input-card-body">
       <%= f.text_area :content, placeholder: "Tell the world something..." %>
     </div>
     <div class="card-footer" id="post-submit-footer">
       <%= link_to "Share a photo", url_for(photo: "true"), class: "form-switch" %>
+      <span class="post-errors"></span>
       <%= f.submit 'Post', class: 'btn btn-primary' %>
     </div>
   <% end %>

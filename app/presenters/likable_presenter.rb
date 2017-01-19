@@ -23,18 +23,23 @@ module LikablePresenter
 
   def like_link
     if current_user.likes?(likable)
-      # TODO can I get the right liking without making this query?
       liking = Liking.where(user_id: current_user.id, likable_id: likable.id).first
-      path = "liking_path"
-      link_to 'Unlike', send(path, liking.id), class: 'like-link', method: :delete
+      resource = likable.class.to_s.downcase
+      path = "#{resource}_liking_path"
+      link_to 'Unlike', send(path, likable, liking.id), class: 'like-link', method: :delete, remote: :true, data: likable_data
     else
       resource = likable.class.to_s.downcase
       path = "#{resource}_likings_path"
-      link_to 'Like', send(path, likable), class: 'like-link', method: :post
+      link_to 'Like', send(path, likable), class: 'like-link', method: :post, remote: :true, data: likable_data
     end
   end
 
   private
+
+  def likable_data
+    { 'likable-id' => likable.id, 
+      'likable-type' => likable.class.to_s.downcase }
+  end
 
   def likable
     @object

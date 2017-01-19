@@ -16,6 +16,7 @@ gem 'paperclip', '~> 5.1'
 gem 'aws-sdk', '~> 2.6', '>= 2.6.38'
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.1'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7d'
 
 group :development, :test do
   gem 'rspec-rails'

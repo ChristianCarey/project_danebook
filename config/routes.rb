@@ -19,17 +19,17 @@ Rails.application.routes.draw do
   resources :profiles
   
   resources :photos do 
-    resources :likings,  only: [:create]
+    resources :likings,  only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
 
   resources :posts, only: [:create, :destroy] do 
-    resources :likings,  only: [:create]
+    resources :likings,  only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
 
   resources :comments do 
-    resources :likings,  only: [:create]
+    resources :likings,  only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
 

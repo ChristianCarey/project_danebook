@@ -2,7 +2,7 @@
   <header class="card-header">            
     <h3>Photo</h3>
   </header>
-  <%= form_for Photo.new, remote: :true, html: { class: "new-activity" } do |f| %>
+  <%= form_for Photo.new, authenticity_token: :true, html: { class: "new-activity" } do |f| %>
     <div class="card-body" id="post-input-card-body">
       <%= f.file_field :image %>
     </div>

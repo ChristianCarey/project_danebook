@@ -6,7 +6,16 @@ class LikingsController < ApplicationController
     @likable = extract_likable
     @liking  = new_liking(@likable)
     if @liking.save
-      redirect_back(fallback_location: :root)
+      respond_to do |format|
+        format.html do 
+          redirect_back(fallback_location: :root)
+        end
+
+        format.js do 
+          @likable.reload
+          render :change
+        end
+      end
     else
       flash[:danger] = "You can't like that twice."
       redirect_back(fallback_location: :root)
@@ -15,7 +24,17 @@ class LikingsController < ApplicationController
 
   def destroy
     if @liking.destroy
-      redirect_back(fallback_location: :root)
+      respond_to do |format|
+        format.html do 
+          redirect_back(fallback_location: :root)
+        end
+
+        format.js do
+          @likable = extract_likable
+          @likable.reload
+          render :change
+        end
+      end
     else
       flash[:danger] = "You haven't liked that yet."
       redirect_back(fallback_location: :root)
