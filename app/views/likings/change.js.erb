@@ -3,7 +3,5 @@
   $likeLink = $('.like-link[data-likable-id="' + "<%= @likable.id %>" +'"][data-likable-type="' + "<%= @likable.class.to_s.downcase %>" +'"]' );
   $likeLink.html("<%= j(render_like_link(@likable)) %>");
   $likes = $likable.find('.like-description').eq(0);
-  console.log($likes);
-  console.log("wat")
   $likes.html("<%= j(render_likes(@likable)) %>")
 })();

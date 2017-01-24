@@ -4,7 +4,7 @@ class LikingsController < ApplicationController
 
   def create
     @likable = extract_likable
-    @liking  = new_liking(@likable)
+    @liking  = @likable.likings.build(user_id: current_user.id)
     if @liking.save
       respond_to do |format|
         format.html do 
@@ -60,8 +60,6 @@ class LikingsController < ApplicationController
   end
 
   def new_liking(likable)
-    Liking.new(likable_id: likable.id, 
-               user_id: current_user.id,
-               likable_type: likable.class.to_s)
+    likable.likings.build(user_id: current_user.id)
   end
 end
